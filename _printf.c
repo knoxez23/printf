@@ -79,8 +79,9 @@ int _printf(const char *format, ...)
 					printed_chars += _putchar('%');
 					break;
 				default:
-					printed_chars += _putchar('%');
-					printed_chars += _putchar(format[i]);
+					_putchar('%');
+					_putchar(format[i]);
+					printed_chars += 2;
 					break;
 			}
 		}
