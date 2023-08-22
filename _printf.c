@@ -5,6 +5,7 @@
  * @c: character
  * Return: output
  */
+
 int _putchar(char c)
 {
 	return (write(1, &c, 1));
@@ -15,6 +16,7 @@ int _putchar(char c)
  * @args: character
  * Return: output
  */
+
 int print_char(va_list args)
 {
 	return (_putchar(va_arg(args, int)));
@@ -25,6 +27,7 @@ int print_char(va_list args)
  * @args: string
  * Return:  output
  */
+
 int print_string(va_list args)
 {
 	int len = 0;
@@ -32,12 +35,12 @@ int print_string(va_list args)
 
 	if (str == NULL)
 	{
-		len += _printf("null");
+	len += _printf("null");
 	}
 	while (*str)
 	{
-		len += _putchar(*str);
-		str++;
+	len += _putchar(*str);
+	str++;
 	}
 	return (len);
 }
@@ -47,6 +50,7 @@ int print_string(va_list args)
  * @format: specifier
  * Return: output
  */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -54,37 +58,37 @@ int _printf(const char *format, ...)
 	int printed_chars = 0;
 
 	if (format == NULL)
-		return (-1);
+	return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] != '%')
-		{
-			printed_chars += _putchar(format[i]);
-		}
-		else
-		{
-			i++;
-			if (format[i] == '\0' || format[i] == ' ')
-				return (-1);
-			switch (format[i])
-			{
-				case 'c':
-					printed_chars += print_char(args);
-					break;
-				case 's':
-					printed_chars += print_string(args);
-					break;
-				case '%':
-					printed_chars += _putchar('%');
-					break;
-				default:
-					_putchar('%');
-					_putchar(format[i]);
-					printed_chars += 2;
-					break;
-			}
-		}
+	if (format[i] != '%')
+	{
+	printed_chars += _putchar(format[i]);
+	}
+	else
+	{
+	i++;
+	if (format[i] == '\0' || format[i] == ' ')
+	return (-1);
+	switch (format[i])
+	{
+	case 'c':
+	printed_chars += print_char(args);
+	break;
+	case 's':
+	printed_chars += print_string(args);
+	break;
+	case '%':
+	printed_chars += _putchar('%');
+	break;
+	default:
+	_putchar('%');
+	_putchar(format[i]);
+	printed_chars += 2;
+	break;
+	}
+	}
 	}
 
 	va_end(args);
