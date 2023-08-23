@@ -46,6 +46,58 @@ int print_string(va_list args)
 }
 
 /**
+ * print_int - print integer
+ * @args: integer
+ * Return: output
+ */
+int print_int(va_list args)
+{
+	int num = va_arg(args, int);
+	int len = 0;
+
+	if (num < 0)
+	{
+		_putchar('-');
+		len++;
+		num = -num;
+	}
+
+
+	if (num == 0)
+	{
+		len += _putchar('0');
+	}
+	else
+	{
+		int temp = num;
+		int num_digits = 0;
+
+		while (temp > 0)
+		{
+			temp /= 10;
+			num_digits++;
+		}
+
+		while (num_digits > 0)
+		{
+			int i, digit, divisor = 1;
+
+			for (i = 1; i < num_digits; i++)
+			{
+				divisor *= 10;
+			}
+			digit = (num / divisor) % 10;
+
+			_putchar('0' + digit);
+			len++;
+			num_digits--;
+		}
+	}
+
+	return (len);
+}
+
+/**
  * _printf - main printf function
  * @format: specifier
  * Return: output
@@ -54,8 +106,7 @@ int print_string(va_list args)
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i;
-	int printed_chars = 0;
+	int i, printed_chars = 0;
 
 	if (format == NULL)
 	return (-1);
@@ -78,6 +129,10 @@ int _printf(const char *format, ...)
 	break;
 	case 's':
 	printed_chars += print_string(args);
+	break;
+	case 'd':
+	case 'i':
+	printed_chars += print_int(args);
 	break;
 	case '%':
 	printed_chars += _putchar('%');
