@@ -99,7 +99,7 @@ int print_int(va_list args)
 
 /**
  * _printf - main printf function
- * @format: specifier
+ * @format: conversion specifier
  * Return: output
  */
 
