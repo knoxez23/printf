@@ -15,5 +15,6 @@ int print_octal(va_list args);
 int print_hex(va_list args, int uppercase);
 int print_hex_lower(va_list args);
 int print_hex_upper(va_list args);
+int print_binary(va_list args);
 
 #endif
