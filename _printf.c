@@ -134,6 +134,21 @@ int _printf(const char *format, ...)
 	case 'i':
 	printed_chars += print_int(args);
 	break;
+	case 'u':
+	printed_chars += print_unsigned(args);
+	break;
+	case 'o':
+	printed_chars += print_octal(args);
+	break;
+	case 'x':
+	printed_chars += print_hex_lower(args);
+	break;
+	case 'X':
+	printed_chars += print_hex_upper(args);
+	break;
+	case 'b':
+	printed_chars += print_binary(args);
+	break;
 	case '%':
 	printed_chars += _putchar('%');
 	break;
