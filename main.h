@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <math.h>
 
 int _putchar(char c);
 int print_char(va_list args);
