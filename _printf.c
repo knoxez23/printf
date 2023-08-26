@@ -149,6 +149,9 @@ int _printf(const char *format, ...)
 	case 'b':
 	printed_chars += print_binary(args);
 	break;
+	case 'p':
+	printed_chars += print_memory_address(args);
+	break;
 	case '%':
 	printed_chars += _putchar('%');
 	break;
